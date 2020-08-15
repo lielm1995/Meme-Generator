@@ -1,0 +1,360 @@
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: Modak;
+    src: url(../fonts/Modak-Regular.ttf);
+}
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin: 0 0 125px 0;
+    background-color: #E3E3E3;
+}
+
+a {
+    cursor: pointer;
+    font-family: Lato-Bold, sans-serif;
+    text-decoration: none;
+}
+
+.text {
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
+}
+
+.color {
+    cursor: pointer;
+    width: 30px;
+    border: 0;
+    padding: 0 2px;
+    background-color: transparent;
+    border-radius: 0;
+    outline: 0;
+}
+
+.container {
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    background: rgb(201, 155, 40);
+    color: white;
+    padding: 5px;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+}
+
+/* COMPONENTS */
+
+/* header */
+
+.main-header {
+    color: white;
+    background-color: darkgoldenrod;
+    border-bottom: 5px solid rgb(160, 120, 20);
+    text-transform: capitalize;
+    padding-left: 10px;
+    /* margin-bottom: 20px; */
+}
+
+li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border-right: 1px solid #1D1D1D; */
+    width: 100px;
+    /* height: 100px; */
+    font-family: Lato-Bold, sans-seri;
+    font-size: 1rem;
+}
+
+.main-header a {
+    color: inherit;
+    font-family: cursive;
+}
+
+.main-header a:hover {
+    color: black;
+}
+
+.main-header a.active {
+    /* color: white;
+    box-shadow: 0 5px black; */
+    font-weight: 900;
+    text-shadow: 1px 1px 6px black;
+}
+
+.main-logo {
+    font-family: Modak, sans-serif;
+    font-size: 3rem;
+}
+
+.main-logo .logo-dot {
+    font-size: 2rem;
+    color: black;
+}
+
+/* gallery */
+
+.gallery {
+    margin: 20px;
+    grid-template-columns: repeat(auto-fit, 250px);
+    justify-content: center;
+    gap: 20px
+}
+
+.gallery img {
+    cursor: pointer;
+    width: 250px;
+    box-shadow: 0 0 10px 1px #0000008f;
+}
+
+.gallery img:hover {
+    box-shadow: 0 0 10px 2px #000000cf;
+}
+
+/* edit screen */
+
+.edit-meme {
+    padding: 20px;
+}
+
+.canvas-container {
+    /* padding: 20px; */
+    margin-right: 20px;
+    text-align: center;
+    /* background-color: grey; */
+}
+
+.tools {
+    grid-template-columns: repeat(5, 40px);
+    grid-auto-rows: 40px;
+    gap: 5px;
+    grid-template-areas: 
+    "line line line line line" 
+    ". switch add-line delete ." 
+    "increase decrease to-left to-center to-right" 
+    "font-family font-family font-family font-color font-stroke"
+    "download download download download download";
+}
+
+.tools a.download {
+    grid-area: download;
+    width: unset;
+}
+
+.font-stroke {
+    grid-area: font-stroke;
+}
+
+.font-color {
+    grid-area: font-color;
+}
+
+.font-family {
+    grid-area: font-family;
+}
+
+.line {
+    grid-area: line;
+}
+
+.add-line {
+    grid-area: add-line;
+}
+
+.switch {
+    grid-area: switch;
+    transform: rotate(90deg);
+}
+
+.delete {
+    grid-area: delete;
+}
+
+.increase {
+    grid-area: increase;
+    font-size: 1.5rem;
+}
+
+.decrease {
+    grid-area: decrease;
+    font-size: 1rem;
+}
+
+.to-left {
+    grid-area: to-left;
+}
+
+.to-center {
+    grid-area: to-center;
+}
+
+.to-right {
+    grid-area: to-right;
+}
+
+.tools a, .font-color, .font-stroke {
+    cursor: pointer;
+    color: black;
+    background-color: #FFFFFF;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.tools a:hover, .font-color:hover {
+    background-color: lightgray;
+}
+
+#font-color, #font-stroke {
+    width: 0;
+    height: 0;
+    max-width: 0;
+    max-height: 0;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    appearance: none;
+    outline: none;
+    font: unset;
+}
+
+/* HELPERS */
+
+/* flex helpers */
+
+.flex {
+    display: flex;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.align-end {
+    align-items: flex-end;
+}
+
+/* grid helpers */
+
+.grid {
+    display: grid;
+}
+
+/* list-helpers */
+
+.clean-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+@media (max-width: 690px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fill, 200px);
+    }
+    .gallery img {
+        width: 200px;
+    }
+    .edit {
+        flex-direction: column;
+    }
+    .tools {
+        gap: 10px;
+        justify-content: center;
+    }
+}
+
+.toggle-menu-screen {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background: rgba(255, 255, 255, 0.5);
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    transition: opacity .5s;
+}
+
+.toggle-menu-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    padding: 20px;
+    display: none;
+  }
+
+@media (max-width: 500px) {
+    .toggle-menu-screen {
+        display: block;
+    }
+    .open .main-nav {
+        transform: translate(0, 0);
+    }
+    .toggle-menu-btn {
+        display: block;
+      }
+    .main-nav {
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 300;
+        background: darkgoldenrod;
+        height: 100vh;
+        transition: transform 1s;
+        transform: translate(100%, 0);
+    }
+    .main-nav a {
+        height: auto;
+        line-height: 1;
+        padding: 20px 0;
+        width: 40vw;
+        border: none;
+        border-bottom: 3px solid rgb(160, 120, 20);
+    }
+}
+
+.open .toggle-menu-screen {
+    visibility: visible;
+    opacity: 1;
+}
+
+@media (max-width: 480px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fill, 250px);
+    }
+    .gallery img {
+        width: 250px;
+    }
+}

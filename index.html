@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body onload="onInit()">
+
+    <header class="main-header">
+        <div class="container flex space-between align-center">
+            <div class="main-logo">MemeGen</div>
+            <nav class="main-menu">
+                <ul class="main-nav clean-list flex">
+                    <li><a href="#" onclick="onBackToGallery(this)" class="active">Gallery</a></li>
+                    <li><a href="#" onclick="goTo(this)">About</a></li>
+                </ul>
+                <button class="toggle-menu-btn fas fa-bars" onclick="toggleMenu()" alt="Open main menu"></button>
+                <div class="toggle-menu-screen screen" onclick="toggleMenu()" alt="toggle main menu"></div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="edit-meme flex space-between">
+        <div class="edit container flex space-between">
+            <div class="canvas-container">
+                <canvas onmousemove="onMove(event)"  onmouseout="toggleDrag(false)"  onmousedown="handleMouseDown(event)" 
+                    onmouseup="toggleDrag(false)"  onclick="handleClick(event)"  width="400" height="400"></canvas>
+            </div>
+            <div class="tools grid">
+                <input class="line" type="text" placeholder="Add text" onkeyup="onSetLine(this)" />
+                <a onclick="onSwitchLine()" class="switch flex align-center justify-center fas fa-exchange-alt"></a>
+                <a onclick="onAddLine()" class="add-line flex align-center justify-center fas fa-plus"></a>
+                <a onclick="onDeleteLine()" class="delete flex align-center justify-center far fa-trash-alt"></a>
+                <a onclick="onChangeFontSize(1)" class="increase flex align-center justify-center fas fa-font">+</a>
+                <a onclick="onChangeFontSize(-1)" class="decrease flex align-center justify-center fas fa-font">-</a>
+                <a onclick="onLeftLine()" class="to-left flex align-center justify-center fas fa-align-left"></a>
+                <a onclick="onCenterLine()" class="to-center flex align-center justify-center fas fa-align-center"></a>
+                <a onclick="onRightLine()" class="to-right flex align-center justify-center fas fa-align-right"></a>
+                <select onchange="onChangeFont(this)" name="font-family" class="font-family"></select>
+                <label for="font-color" class="font-color flex align-center justify-center fas fa-palette">
+                    <input oninput="onChangeFontColor(this)" type="color" id="font-color">
+                </label>
+                <label for="font-stroke" class="font-stroke flex align-center justify-center fas fa-signature">
+                    <input oninput="onChangeStrokeColor(this)" type="color" id="font-stroke">
+                </label>
+                <a onclick="onDownload(this)" onmousedown="cleanMark()" download="my-meme.jpg" class="download flex align-center justify-center far fa-save">&nbsp; Download meme</a>
+            </div>
+        </div>
+    </div>
+    <div class="gallery grid">
+
+    </div>
+
+    <footer>
+        <div class="main-logo">MemeGen</div>
+        &copy; all rights reserved 2020
+    </footer>
+
+
+    <script src="js/meme-service.js"></script>
+    <script src="js/meme-controller.js"></script>
+</body>
+
+</html>
